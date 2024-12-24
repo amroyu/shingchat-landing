@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShingChat - Conversations that Spark Change</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-widget" id="chatWidget">
+        <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+            <div class="chat-icon">
+                <svg class="chat-bubble" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="bubble-path" d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="ripple-background"></div>
+        </button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <img src="assets/logo.png" alt="ShingChat Logo" class="chat-logo">
+                <span class="chat-status">Online</span>
+                <button class="close-chat" id="closeChat">×</button>
+            </div>
+            <div class="chat-body">
+                <h3>ShingChat</h3>
+                <p>Start the conversation & empower patients with the knowledge they need to get vaccinated!</p>
+                <button class="start-chat-btn">Start chat</button>
+            </div>
+            <div class="chat-footer">
+                <small>Powered by ChatBot</small>
+            </div>
+        </div>
+    </div>
+
+    <main class="hero">
+        <div class="hero-background"></div>
+        <nav class="navbar">
+            <div class="logo reveal-slide-down">
+                <img src="assets/logo.png" alt="ShingChat Logo">
+            </div>
+        </nav>
+        
+        <div class="hero-content">
+            <div class="hero-text reveal-slide-up">
+                <div class="badge">For HCPs only</div>
+                <h1 class="gradient-text">ShingChat Is More than Just a Bot!</h1>
+                <h2>CONVERSATIONS<br>THAT SPARK CHANGE</h2>
+                <p class="subtitle">Provide Patients the Care they Deserve!</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>For more information, please refer to the prescribing information or contact</p>
+                <p>GSK: P.O Box 55850, Jeddah, 21544, Kingdom of Saudi Arabia.Telephone: +966 12 653 6666 or via gcc.medinfo@gsk.com</p>
+            </div>
+            <div class="footer-links">
+                <p class="adverse-events">To report Adverse Event/s associated with the use of GSK product/s, please contact us via saudi.safety@gsk.com</p>
+                <p class="quality-complaints">To report the Quality related product complaint/s associated with the use of GSK product/s, please contact us via KSA.ProductQualityComplaint@gsk.com</p>
+                <p class="trademark">Trademarks are owned by or licensed to the GSK group of companies.</p>
+                <p class="reference">PM-SA-SGX-WCNT-240004 – May 2024</p>
+                <h3 class="related-links">Related Links</h3>
+                <div class="link-group">
+                    <a href="https://links.intermarkfileup.com/files/n10/sa-spc-Shingrix-GDSv7.pdf" target="_blank" rel="noopener noreferrer">Prescribing Information</a>
+                    <span class="separator">·</span>
+                    <a href="https://www.shingchat.com/wp-content/uploads/2024/10/1727862804_ShingChat-References-1.pdf" target="_blank" rel="noopener noreferrer">References</a>
+                    <span class="separator">·</span>
+                    <a href="https://privacy.gsk.com/en-sa/privacy-notice/healthcare-professional/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                    <span class="separator">·</span>
+                    <a href="https://terms.gsk.com/en-sa/pharmaceuticals/default/" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+                </div>
+                <p class="copyright">Copyright  GlaxoSmithKline 2024. All rights reserved</p>
+            </div>
+            <div class="gsk-logo">
+                <img src="assets/gsk-logo.png" alt="GSK Logo">
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
