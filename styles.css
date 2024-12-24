@@ -1,10 +1,26 @@
 :root {
-    --primary-color: #C41E3A;
+    --primary-color: #1B1464;
     --secondary-color: #FF6B35;
-    --text-color: #333333;
-    --light-gray: #F5F5F5;
     --white: #FFFFFF;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --text-color: #333333;
+    --light-gray: #F5F5F5;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 * {
@@ -52,44 +68,21 @@
     animation: slideDown 1s ease forwards;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--white);
-    overflow-x: hidden;
-}
-
-.hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
-                url('assets/background.jpg') center/cover fixed;
-    z-index: -1;
-    animation: fadeIn 2s ease;
-}
-
+/* Improved Navbar */
 .navbar {
-    padding: 0.5rem 8%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    position: relative;
-    z-index: 10;
-    overflow: visible;
+    background: rgba(27, 20, 100, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.navbar.scrolled {
+    background: rgba(27, 20, 100, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -109,15 +102,50 @@ body {
     transform: scale(1.02);
 }
 
-.hero-content {
-    flex: 1;
+/* Enhanced Hero Section */
+.hero {
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 4rem 8%;
-    max-width: 1400px;
-    margin: 0 auto;
-    width: 100%;
-    min-height: calc(100vh - 120px);
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(27, 20, 100, 0.95), rgba(27, 20, 100, 0.8));
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('assets/background.jpg') center/cover;
+    z-index: -1;
+    animation: zoomBg 20s infinite alternate ease-in-out;
+}
+
+@keyframes zoomBg {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-text {
@@ -174,6 +202,7 @@ h2 {
     bottom: 3rem;
     right: 3rem;
     z-index: 1000;
+    filter: drop-shadow(0 4px 20px rgba(255, 107, 53, 0.2));
 }
 
 .chat-toggle {
@@ -183,35 +212,37 @@ h2 {
     background: linear-gradient(135deg, var(--secondary-color), #FF8F6B);
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
     position: relative;
     overflow: hidden;
 }
 
-.ripple-background {
+.chat-toggle::before {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    inset: 0;
+    background: radial-gradient(circle at center, 
+        rgba(255,255,255,0.2) 0%, 
+        rgba(255,255,255,0) 70%);
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    transform: scale(0.8);
+    transition: var(--transition);
 }
 
 .chat-toggle:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(255, 107, 53, 0.35);
+    transform: translateY(-4px) scale(1.05);
+    filter: brightness(1.1);
 }
 
-.chat-toggle:hover .ripple-background {
+.chat-toggle:hover::before {
     opacity: 1;
     transform: scale(1.2);
+}
+
+.chat-toggle:active {
+    transform: translateY(-2px) scale(0.95);
 }
 
 .chat-icon {
@@ -310,35 +341,24 @@ h2 {
     }
 }
 
-@media (max-width: 768px) {
-    .chat-widget {
-        bottom: 2rem;
-        right: 2rem;
-    }
-
-    .chat-toggle {
-        width: 60px;
-        height: 60px;
-    }
-
-    .chat-icon {
-        width: 28px;
-        height: 28px;
-    }
-
-    .chat-window {
-        width: 320px;
-        right: -20px;
-    }
+/* Improved Footer */
+footer {
+    background: linear-gradient(to bottom, var(--primary-color), #130d47);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Footer Styles */
-footer {
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 1.5rem 5%;
-    font-family: 'Inter', Arial, sans-serif;
-    line-height: 1.3;
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0) 100%);
 }
 
 .footer-content {
@@ -393,9 +413,10 @@ footer {
     color: var(--white);
     text-decoration: none;
     font-size: 12px;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     position: relative;
     padding: 2px 4px;
+    opacity: 0.9;
 }
 
 .link-group a::after {
@@ -403,17 +424,17 @@ footer {
     position: absolute;
     width: 100%;
     height: 1px;
-    background: var(--white);
+    background: currentColor;
     bottom: 0;
     left: 0;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link-group a:hover {
-    color: #FFB6C1;
-    transform: translateY(-1px);
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 .link-group a:hover::after {
@@ -459,6 +480,20 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .hero-content {
+        padding: 1rem;
+    }
+    
+    .chat-widget {
+        bottom: 2rem;
+        right: 2rem;
+    }
+    
+    .chat-toggle {
+        width: 60px;
+        height: 60px;
+    }
+    
     footer {
         padding: 1rem 5%;
     }
@@ -514,4 +549,22 @@ footer {
     footer {
         padding: 3rem 5%;
     }
+}
+
+/* Loading Animation */
+.loading {
+    position: fixed;
+    inset: 0;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
