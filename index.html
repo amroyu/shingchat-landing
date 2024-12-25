@@ -12,47 +12,57 @@
 <body>
     <div class="chat-widget" id="chatWidget">
         <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
-            <div class="chat-icon">
-                <svg class="chat-bubble" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="bubble-path" d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div class="ripple-background"></div>
+            <img src="assets/logo.jpg" alt="ShingChat" class="chat-icon">
         </button>
         <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <img src="assets/logo.png" alt="ShingChat Logo" class="chat-logo">
-                <span class="chat-status">Online</span>
-                <button class="close-chat" id="closeChat">×</button>
-            </div>
-            <div class="chat-body">
-                <h3>ShingChat</h3>
-                <p>Start the conversation & empower patients with the knowledge they need to get vaccinated!</p>
-                <button class="start-chat-btn">Start chat</button>
-            </div>
-            <div class="chat-footer">
-                <small>Powered by ChatBot</small>
+            <div class="chat-window-inner">
+                <button class="close-chat" id="closeChat" aria-label="Close chat">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="chat-header">
+                    <div class="chat-profile">
+                        <div class="profile-icon">
+                            <img src="assets/logo.jpg" alt="ShingChat" class="profile-img">
+                        </div>
+                        <div class="profile-info">
+                            <h3>ShingChat</h3>
+                            <div class="status-wrapper">
+                                <span class="status-dot"></span>
+                                <span class="status-text">Online</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-body">
+                    <div class="welcome-message">
+                        <h2>Welcome to ShingChat!</h2>
+                        <p>Start the conversation & empower patients with the knowledge they need to get vaccinated!</p>
+                        <button class="start-chat-btn">
+                            <span>Start chat</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <main class="hero">
-        <div class="hero-background"></div>
-        <nav class="navbar">
-            <div class="logo reveal-slide-down">
-                <img src="assets/logo.png" alt="ShingChat Logo">
-            </div>
-        </nav>
-        
+    <header class="hero">
+        <div class="logo-container">
+        </div>
         <div class="hero-content">
-            <div class="hero-text reveal-slide-up">
+            <div class="hero-text">
                 <div class="badge">For HCPs only</div>
-                <h1 class="gradient-text">ShingChat Is More than Just a Bot!</h1>
+                <h1>More than Just a Bot!</h1>
                 <h2>CONVERSATIONS<br>THAT SPARK CHANGE</h2>
                 <p class="subtitle">Provide Patients the Care they Deserve!</p>
             </div>
         </div>
-    </main>
+    </header>
 
     <footer>
         <div class="footer-content">
@@ -82,7 +92,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

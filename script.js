@@ -37,24 +37,37 @@ document.addEventListener('DOMContentLoaded', () => {
     // Chat widget functionality
     const chatToggle = document.getElementById('chatToggle');
     const chatWindow = document.getElementById('chatWindow');
-    let isOpen = false;
+    const closeChat = document.getElementById('closeChat');
 
-    chatToggle.addEventListener('click', () => {
-        isOpen = !isOpen;
-        chatWindow.style.display = isOpen ? 'block' : 'none';
-        
-        if (isOpen) {
-            chatWindow.style.animation = 'slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
-    });
+    if (chatToggle && chatWindow && closeChat) {
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+        });
 
-    // Close chat window when clicking outside
-    document.addEventListener('click', (e) => {
-        if (isOpen && !chatWindow.contains(e.target) && !chatToggle.contains(e.target)) {
-            isOpen = false;
-            chatWindow.style.display = 'none';
-        }
-    });
+        closeChat.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!chatWindow.contains(e.target) && e.target !== chatToggle) {
+                chatWindow.classList.remove('active');
+            }
+        });
+
+        chatWindow.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+    // Start chat button functionality
+    const startChatBtn = document.querySelector('.start-chat-btn');
+    if (startChatBtn) {
+        startChatBtn.addEventListener('click', () => {
+            // Add your chat start logic here
+            console.log('Starting chat...');
+        });
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
